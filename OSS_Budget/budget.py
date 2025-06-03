@@ -24,4 +24,16 @@ class Budget:
         total = sum(e.amount for e in self.expenses)
         print(f"총 지출: {total}원\n")
 
+    def list_expenses_sorted(self, reverse=False):
+        if not self.expenses:
+            print("지출 내역이 없습니다.\n")
+            return
+
+        sorted_expenses = sorted(self.expenses, key=lambda e: e.amount, reverse=reverse)
+        order = "내림차순" if reverse else "오름차순"
+        print(f"\n[지출 목록 - 금액 {order}]")
+        for idx, e in enumerate(sorted_expenses, 1):
+            print(f"{idx}. {e}")
+        print()    
+
 
